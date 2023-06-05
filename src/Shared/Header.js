@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
+import useAdmin from "../hooks/useAdmin";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -9,6 +10,8 @@ const Header = () => {
       .then(() => {})
       .catch((err) => console.log(err));
   };
+  const [isAdmin] = useAdmin(user?.email);
+  // console.log(isAdmin);
   return (
     <div>
       <div className="navbar bg-base-100 drop-shadow-lg">
@@ -67,7 +70,11 @@ const Header = () => {
             {user?.uid ? (
               <>
                 <li>
-                  <Link to="/">Profile</Link>
+                  {isAdmin ? (
+                    <Link to="/dashboard">Dashboard</Link>
+                  ) : (
+                    <Link to="/">Profile</Link>
+                  )}
                 </li>
                 <li>
                   <Link onClick={handleLogOut} to="/">
