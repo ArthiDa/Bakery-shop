@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assests/login.svg";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -8,6 +8,9 @@ import { motion as m } from 'framer-motion';
 
 
 const Register = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const { createUser, updateUser, user } = useContext(AuthContext);
   const {
     register,
