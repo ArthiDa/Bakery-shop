@@ -9,6 +9,7 @@ import { motion as m } from 'framer-motion';
 const Login = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
+    
   }, [])
   const {
     register,
