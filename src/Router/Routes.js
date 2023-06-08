@@ -9,6 +9,11 @@ import DisplayError from '../Shared/DisplayError';
 import AdminRoute from './AdminRoute';
 import Overview from '../Pages/Admin/Overview';
 import AddProduct from '../Pages/Admin/AddProduct';
+import Products from '../Pages/Products/Products';
+import AboutUs from '../Pages/AboutUs/AboutUs';
+import ManageProducts from '../Pages/Admin/ManageProducts';
+import UpdateProduct from '../Pages/Admin/UpdateProduct';
+import ViewOrder from '../Pages/Admin/ViewOrder';
 
 const { createBrowserRouter } = require('react-router-dom');
 
@@ -28,7 +33,16 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/products',
+                element: <Products></Products>
+            },
+            {
+                path: '/about',
+                element: <AboutUs></AboutUs>
             }
+
             
         ]
     },
@@ -44,6 +58,18 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/addproduct',
                 element: <AdminRoute><AddProduct></AddProduct></AdminRoute>
+            },
+            {
+                path: '/dashboard/manageproduct',
+                element: <AdminRoute><ManageProducts></ManageProducts></AdminRoute>
+            },
+            {
+                path: '/dashboard/manageproduct/update/:_id',
+                element: <AdminRoute><UpdateProduct></UpdateProduct></AdminRoute>
+            },
+            {
+                path: '/dashboard/vieworder',
+                element: <AdminRoute><ViewOrder></ViewOrder></AdminRoute>
             }
         ]
     }

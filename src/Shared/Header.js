@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
+import Order from "../Pages/Order/Order";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -41,7 +42,7 @@ const Header = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/">Products</Link>
+                <Link to="/products">Products</Link>
               </li>
               <li>
                 <Link to="/">About Us</Link>
@@ -58,10 +59,10 @@ const Header = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/">Products</Link>
+              <Link to="/products">Products</Link>
             </li>
             <li>
-              <Link to="/">About Us</Link>
+              <Link to="/about">About Us</Link>
             </li>
           </ul>
         </div>

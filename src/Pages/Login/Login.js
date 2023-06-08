@@ -3,19 +3,24 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assests/login.svg";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { motion as m } from 'framer-motion';
+
 
 const Login = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const { signIn , user, setIsAdmin} = useContext(AuthContext);
+  const { signIn, user, setIsAdmin } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-  if(user?.uid){
+  if (user?.uid) {
     navigate("/");
   }
   const from = location.state?.from?.pathname || "/";
@@ -28,7 +33,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setLoginUserEmail(data.email);
-        navigate(from,{replace: true});
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
@@ -37,7 +42,10 @@ const Login = () => {
   };
 
   return (
-    <div className="hero w-full my-20">
+    <m.div initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75, ease: 'easeOut' }}
+      exit={{ opacity: 0 }} className="hero w-full my-20">
       <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
         <div className="text-center lg:text-left">
           <img className="w-3/4" src={img} alt="" />
@@ -97,7 +105,7 @@ const Login = () => {
           </p>
         </div>
       </div>
-    </div>
+    </m.div>
   );
 };
 

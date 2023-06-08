@@ -4,6 +4,8 @@ import img from "../../assests/login.svg";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { motion as m } from 'framer-motion';
+
 
 const Register = () => {
   const { createUser, updateUser, user } = useContext(AuthContext);
@@ -17,7 +19,8 @@ const Register = () => {
   const location = useLocation();
   const navigate = useNavigate();
   
-  if(user?.uid){
+
+  if (user?.uid) {
     navigate("/");
   }
   const handleRegister = (data) => {
@@ -32,7 +35,7 @@ const Register = () => {
         };
         updateUser(userInfo)
           .then(() => {
-            saveUser(data.name,data.email);
+            saveUser(data.name, data.email);
           })
           .catch((err) => console.error(err));
         // navigate(from, {replace: true});
@@ -42,22 +45,25 @@ const Register = () => {
         setRegisterError(error.message);
       });
   };
-  const saveUser = (name,email)=>{
-    const user = {name,email};
-    fetch('http://localhost:5000/users',{
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch('http://localhost:5000/users', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify(user)
     })
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data);
-    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      })
   }
   return (
-    <div className="hero w-full my-20">
+    <m.div initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75, ease: 'easeOut' }}
+      exit={{ opacity: 0 }} className="hero w-full my-20">
       <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
         <div className="text-center lg:text-left">
           <img className="w-3/4" src={img} alt="" />
@@ -136,7 +142,7 @@ const Register = () => {
           {/* <div className="divider">OR</div> */}
         </div>
       </div>
-    </div>
+    </m.div>
   );
 };
 

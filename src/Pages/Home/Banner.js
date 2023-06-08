@@ -4,7 +4,7 @@ import React from 'react';
 const Banner = () => {
     return (
         <div>
-            <div className="carousel w-full z-30">
+            <div className="carousel w-full">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src="https://breadandbeyondbd.com/Ecom/Slider/jTDWHof5.jpg" className="w-full" alt='Cake'/>
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">

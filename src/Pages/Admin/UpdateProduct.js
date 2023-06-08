@@ -1,29 +1,38 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { motion as m } from "framer-motion";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
-const AddProduct = () => {
+const UpdateProduct = () => {
+    const {_id} = useParams();
   const navigate = useNavigate();
+  const [details, setDetails] = useState({
+    id: _id,
+    name: "",
+    price: 0,
+    img: "",
+    description: "",
+    category: "",
+    weight: "",
+  });
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+  const {name,price,img,description,category,weight} = details;
+  useEffect(()=>{
+    fetch(`http://localhost:5000/products/${_id}`)
+    .then(res=>res.json())
+    .then(data=>{
+        setDetails(data);
+    });
+  },[])
   const handleSubmit = (event) => {
     event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const price = form.price.value;
-    const img = form.img.value;
-    const category = form.category.value;
-    const description = form.desc.value;
-    const weight = form.weight.value;
     const newProduct = { name, price, img, category, description, weight };
-    console.log(newProduct);
-    saveInDB(newProduct);
-    // console.log(name);
+    updateInDB(newProduct);
   };
-  const saveInDB = (product) => {
-    fetch("http://localhost:5000/products", {
+  const updateInDB = (product) => {
+    fetch(`http://localhost:5000/products/update/${_id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -32,9 +41,12 @@ const AddProduct = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast("Product Added Successfully :)")
+        toast('Product Updated Successfully :)')
         navigate("/dashboard");
       });
+  };
+  const onCourseDataChange = (e) => {
+    setDetails((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   return (
     <m.div
@@ -45,7 +57,7 @@ const AddProduct = () => {
       className="w-2/4 mx-auto shadow-lg p-5 mt-5 rounded-xl"
     >
       <h1 className="text-3xl text-center font-bold py-10 tracking-wider">
-        Add Product
+        Update Product
       </h1>
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col space-y-5">
@@ -53,10 +65,9 @@ const AddProduct = () => {
             <span className="text-xl  font-semibold">Name:</span>
             <input
               type="text"
-              // onChange={onCourseDataChange}
+              onChange={onCourseDataChange}
               className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-              placeholder="Enter the product tittle"
-              // value={tittle}
+              value={name}
               name="name"
               required
             />
@@ -64,12 +75,11 @@ const AddProduct = () => {
           <div>
             <span className="text-xl font-semibold">Price:</span>
             <input
-              // onChange={onCourseDataChange}
+              onChange={onCourseDataChange}
               type="number"
               min="100"
               className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-              placeholder="Enter the product price"
-              // value={price}
+              value={price}
               name="price"
               required
             />
@@ -77,11 +87,10 @@ const AddProduct = () => {
           <div>
             <span className="text-xl  font-semibold">Image:</span>
             <input
-              // onChange={onCourseDataChange}
+              onChange={onCourseDataChange}
               type="text"
               className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-              placeholder="Enter the product image link"
-              // value={img}
+              value={img}
               name="img"
               required
             />
@@ -89,27 +98,25 @@ const AddProduct = () => {
           <div>
             <span className="text-xl  font-semibold">Description:</span>
             <textarea
-              // onChange={onCourseDataChange}
+              onChange={onCourseDataChange}
               type="text"
               className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-              placeholder="Enter the product description"
-              // value={description}
-              name="desc"
+              value={description}
+              name="description"
               required
             />
           </div>
           <div>
             <span className="text-xl  font-semibold">Categories:</span>
             <select
-              // onChange={onCourseDataChange}
+              onChange={onCourseDataChange}
               type="text"
               className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-              placeholder="Enter the course category"
-              // value={category}
+              value={category}
               name="category"
               required
             >
-              <option defaultChecked value="Cakes">
+              <option value="Cakes">
                 Cakes
               </option>
               <option value="Cookies">Cookies</option>
@@ -119,12 +126,11 @@ const AddProduct = () => {
           <div>
             <span className="text-xl font-semibold">Weight(gm):</span>
             <input
-              // onChange={onCourseDataChange}
+              onChange={onCourseDataChange}
               type="number"
               min="100"
               className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-              placeholder="Enter the product weight"
-              // value={price}
+              value={weight}
               name="weight"
               required
             />
@@ -135,7 +141,7 @@ const AddProduct = () => {
             type="submit"
             className="btn btn-primary btn-outline px-5 py-2 font-bold text-xl text-black rounded my-2"
           >
-            Add Product
+            Update Product
           </button>
         </div>
       </form>
@@ -143,4 +149,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;
