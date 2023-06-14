@@ -23,6 +23,7 @@ Modal.setAppElement("body");
 
 const Product = ({ product }) => {
   const { user } = useContext(AuthContext);
+  console.log(user);
   const [isAdmin] = useAdmin(user?.email);
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);

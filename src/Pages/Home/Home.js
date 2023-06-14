@@ -4,6 +4,7 @@ import Feature from "./Feature";
 import Categories from "./Categories";
 import Cakes from "./Cakes";
 import { motion as m } from "framer-motion";
+import Contact from "./Contact";
 
 const Home = () => {
   useEffect(() => {
@@ -21,6 +22,7 @@ const Home = () => {
       <Feature></Feature>
       <Categories></Categories>
       <Cakes></Cakes>
+      <Contact></Contact>
     </m.div>
   );
 };
