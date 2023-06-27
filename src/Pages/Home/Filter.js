@@ -12,7 +12,7 @@ const Filter = ({ items, setFiltered, activeCategory, setActiveCategory }) => {
     }, [activeCategory])
     return (
         <div>
-            <div className="list-none flex lg:w-1/2 mx-auto justify-evenly lg:text-2xl filter-container text-xl ">
+            <div className="list-none flex justify-between lg:w-1/2 lg:mx-auto lg:justify-evenly lg:text-2xl filter-container text-xl ">
                 <button className={activeCategory === 'All' ? 'active' : ''} onClick={() => setActiveCategory('All')}>All</button>
                 <button className={activeCategory === 'Cakes' ? 'active' : ''} onClick={() => setActiveCategory("Cakes")}>Cakes</button>
                 <button className={activeCategory === 'Cookies' ? 'active' : ''} onClick={() => setActiveCategory("Cookies")}>Cookies</button>

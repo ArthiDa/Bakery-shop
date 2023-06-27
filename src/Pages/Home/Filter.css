@@ -1,7 +1,7 @@
 .filter-container button{
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
     min-width: 5rem;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 0.5rem;
     border: none;
     background: white;
     color: rgb(65,98,168);

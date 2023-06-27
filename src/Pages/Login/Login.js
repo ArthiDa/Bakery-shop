@@ -46,12 +46,12 @@ const Login = () => {
     <m.div initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.75, ease: 'easeOut' }}
-      exit={{ opacity: 0 }} className="hero w-full my-20">
+      exit={{ opacity: 0 }} className="hero w-full my-20 mx-auto">
       <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
         <div className="text-center lg:text-left">
-          <img className="w-3/4" src={img} alt="" />
+          <img className="w-full" src={img} alt="" />
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20">
+        <div className="card flex-shrink-0 lg:w-full w-3/4 mx-auto shadow-2xl bg-base-100 py-20">
           <h1 className="text-5xl text-center font-bold">Login</h1>
           <form onSubmit={handleSubmit(handleLogin)} className="card-body">
             <div className="form-control">

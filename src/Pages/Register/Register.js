@@ -69,9 +69,9 @@ const Register = () => {
       exit={{ opacity: 0 }} className="hero w-full my-20">
       <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
         <div className="text-center lg:text-left">
-          <img className="w-3/4" src={img} alt="" />
+          <img className="w-full" src={img} alt="" />
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20">
+        <div className="card flex-shrink-0 lg:w-full w-3/4 mx-auto shadow-2xl bg-base-100 py-20">
           <h1 className="text-5xl text-center font-bold">Register</h1>
           <form onSubmit={handleSubmit(handleRegister)} className="card-body">
             <div className="form-control">

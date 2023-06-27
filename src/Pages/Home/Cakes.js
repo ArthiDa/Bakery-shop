@@ -14,7 +14,7 @@ const Cakes = () => {
     return (
         <div className='my-8'>
             <h1 className='text-center text-3xl font-bold'>Best Selling Cake</h1>
-            <div className='w-4/5 my-8 mx-auto grid lg:grid-cols-4 grid-cols-1 gap-4'>
+            <div className='w-4/5 my-8 mx-auto grid lg:grid-cols-4 grid-cols-2 gap-4'>
                 {
                     items.slice(0, 8).map(food =>
                         <Product key={food._id} product={food}></Product>

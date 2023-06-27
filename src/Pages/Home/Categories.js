@@ -23,7 +23,7 @@ const Categories = () => {
         activeCategory = {activeCategory}
         setActiveCategory={setActiveCategory}
       />
-      <div className="w-4/5 my-8 mx-auto grid lg:grid-cols-4 grid-cols-1 grid-flow-col gap-4">
+      <div className="w-4/5 my-8 mx-auto grid grid-cols-2 lg:grid-cols-4 gap-2">
         {filtered.slice(0,4).map((p) => (
           <Product key={p._id} product={p}></Product>
         ))}
