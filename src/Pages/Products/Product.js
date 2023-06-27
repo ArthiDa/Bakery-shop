@@ -56,7 +56,7 @@ const Product = ({ product }) => {
         productName,
         productPrice,
       };
-      fetch(`http://localhost:5000/order/${user.email}`, {
+      fetch(`https://bakery-shop-server.onrender.com/order/${user.email}`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

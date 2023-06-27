@@ -20,7 +20,7 @@ const UpdateProduct = () => {
   }, [])
   const {name,price,img,description,category,weight} = details;
   useEffect(()=>{
-    fetch(`http://localhost:5000/products/${_id}`)
+    fetch(`https://bakery-shop-server.onrender.com/products/${_id}`)
     .then(res=>res.json())
     .then(data=>{
         setDetails(data);
@@ -32,7 +32,7 @@ const UpdateProduct = () => {
     updateInDB(newProduct);
   };
   const updateInDB = (product) => {
-    fetch(`http://localhost:5000/products/update/${_id}`, {
+    fetch(`https://bakery-shop-server.onrender.com/products/update/${_id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -10,7 +10,7 @@ const Product = ({ item }) => {
   const navigate = useNavigate();
   const handleDelete = () => {
     console.log('clicked', _id);
-    fetch(`http://localhost:5000/product/delete/${_id}`, {
+    fetch(`https://bakery-shop-server.onrender.com/product/delete/${_id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

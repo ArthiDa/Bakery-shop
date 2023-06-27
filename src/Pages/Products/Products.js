@@ -8,7 +8,7 @@ const Products = () => {
     window.scrollTo(0, 0);
   }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://bakery-shop-server.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

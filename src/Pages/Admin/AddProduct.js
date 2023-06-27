@@ -23,7 +23,7 @@ const AddProduct = () => {
     // console.log(name);
   };
   const saveInDB = (product) => {
-    fetch("http://localhost:5000/products", {
+    fetch("https://bakery-shop-server.onrender.com/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",
