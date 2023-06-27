@@ -4,7 +4,7 @@ import { motion as m } from 'framer-motion';
 const Overview = () => {
     const [details,setDetails] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/details')
+        fetch('https://bakery-shop-server.onrender.com/details')
         .then(res => res.json())
         .then(data=> setDetails(data));
     },[])
