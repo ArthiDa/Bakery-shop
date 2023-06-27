@@ -8,7 +8,7 @@ const ViewOrder = () => {
       }, []);
     const [detailsOrder,setDetailsOrder] = useState([]);
     useEffect(() =>{
-        fetch('http://localhost:5000/order')
+        fetch('https://bakery-shop-server.onrender.com/order')
         .then((res) => res.json())
         .then((data) => setDetailsOrder(data))
     },[]) 

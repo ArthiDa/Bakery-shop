@@ -4,7 +4,7 @@ import Product from '../Products/Product';
 const Cakes = () => {
     const [items, setItems] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://bakery-shop-server.onrender.com/products')
             .then(res => res.json())
             .then(data => {
                 const cakes = data.filter(food => food.category.includes('Cakes'));

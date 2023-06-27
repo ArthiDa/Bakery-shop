@@ -7,7 +7,7 @@ const Categories = () => {
   const [filtered, setFiltered] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
   useEffect(() => {
-    fetch('http://localhost:5000/products')
+    fetch('https://bakery-shop-server.onrender.com/products')
     .then(res => res.json())
     .then(data =>{
       console.log(data);
